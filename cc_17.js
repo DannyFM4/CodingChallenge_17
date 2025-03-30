@@ -47,6 +47,20 @@ class SalesRep {
     };
 };
 
+class VIPCustomer extends Customer {
+    constructor(name, email, vipLevel) {
+        super(name, email);
+        this.vipLevel = vipLevel;
+    };
+
+    getTotalSpent() {
+        const total = super.getTotalSpent();
+        const totalWithBonus = total * 1.1;
+
+        console.log(`Total Spent by VIP With Loyalty Bonus: $${totalWithBonus}`);
+    };
+}
+
 // Task 1 - test data
 const customer1 = new Customer('Cade Cunningham', 'ccunningham@gmail.com');
 customer1.addPurchase(15);
@@ -56,3 +70,8 @@ console.log(`Total Amount Spent: $${customer1.getTotalSpent()}`);
 const salesRep1 = new SalesRep('Travis Hunter');
 salesRep1.addClient(customer1);
 salesRep1.getClientTotal('Cade Cunningham');
+
+// Task 3 - test data
+const vipCustomer1 = new VIPCustomer('Lebron James', 'bronbron24@gmail.com', 'Gold');
+vipCustomer1.addPurchase(2000);
+vipCustomer1.getTotalSpent();
